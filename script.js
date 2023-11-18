@@ -1,8 +1,4 @@
-const enemyImg = document.getElementById("enemy-img");
-const playerImg = document.getElementById("player-img");
-
-
-//Ship class that will
+//Class for all the ships
 class Ship {
     constructor(hull, firepower, accuracy) {
         this.hull = hull
@@ -47,8 +43,7 @@ for (let i = 0; i < 6; i++){
     enemyShips.push(newAlienShip)
 }
 
-console.log(enemyShips)
-
+//Funtion to get final game score
 function scoreTally(Player, arr){
     let finalScore = 50
     if (Player.hull < 0){
@@ -62,7 +57,7 @@ function scoreTally(Player, arr){
     }
     return finalScore;
 }
-
+//Game text 
 const displayText = document.getElementById("display-text");
 
 function displayText1(Player, Enemy, action) {
@@ -77,35 +72,33 @@ function displayText1(Player, Enemy, action) {
     } else if (action === "fleeBtn") {
         displayText.innerHTML = `
         <h4>You gave up! But kept your life in the process! GAME OVER. Final Score: ${scoreTally(Player, enemyShips)}</h4>
-        <button class="restart"><a href="javascript: location. reload();">RETRY</a></button>
+        <a href="javascript: location. reload();"><button class="restart">RETRY</button></a>
         `
     } else if (action === "win") {
         displayText.innerHTML = `
         <h4>Your ship has destroyed all the invaders! Final Score: ${scoreTally(Player, enemyShips)}</h4>
-        <button class="restart"><a href="javascript: location. reload();">RETRY</a></button>
+        <a href="javascript: location. reload();"><button class="restart">RETRY</button></a>
         `
     } else if (action === "loss") {
         displayText.innerHTML = `
         <h4>Your ship has been destroyed! Final Score: ${scoreTally(Player, enemyShips)}</h4>
-        <button class="restart"><a href="javascript: location. reload();">RETRY</a></button>
+        <a href="javascript: location. reload();"><button class="restart">RETRY</button></a>
         `
     }
 }
-
+//Function to display damage upon hit
 function flashRed(image) {
     image.style.backgroundColor = 'red'; // Change background to red
     setTimeout(() => {
       image.style.backgroundColor = ''; // Revert back to original background
     }, 125); // Duration for the red flash in milliseconds (e.g., 500ms)
-    
   }
-
+//Function to commence the battle 
 function battle(Player, Enemy, action) {
     while (Player.hull > 0 && Enemy.hull > 0){
         Player.attack(Enemy);
         setInterval(flashRed(enemyImg), 50);
         if (enemyShips.length > 0){
-            console.log(`alien has ${Enemy.hull} Your hull is ${Player.hull}`)
             if(Enemy.hull >= 1) {
                 Enemy.attack(Player);
                 setInterval(flashRed(playerImg), 150);
@@ -113,32 +106,26 @@ function battle(Player, Enemy, action) {
             displayText1(Player, Enemy, action)
         }
         if(Enemy.hull <= 0) {
-            console.log('Enemy ship was destroyed!')
             enemyShips.shift();
             displayText1(Player, Enemy, action)
         }
 
         if(Player.hull <= 0) {
-            console.log('Your ship has been destroyed! Try again?')
             displayText1(Player, Enemy, "loss");
             break;
         }
 
         if (enemyShips.length === 0){
-            console.log("You WIN")
-            console.log("Final Score: " + scoreTally(Player, enemyShips))
             displayText1(Player, Enemy, "win")
         }
     }
-
-    console.log(enemyShips.length)
-
 }
-
-const USSAssembly = new PlayerShip(20, 5, .7)
 
 
 ///BUTTONS AND STYLES 
+const USSAssembly = new PlayerShip(20, 5, .7)
+const enemyImg = document.getElementById("enemy-img");
+const playerImg = document.getElementById("player-img");
 const atkBtn = document.getElementById("atk__btn");
 const fleeBtn = document.getElementById("flee__btn");
 
@@ -155,21 +142,3 @@ atkBtn.addEventListener("click" , (e) => {
 fleeBtn.addEventListener("click", (e) => {
     USSAssembly.flee(USSAssembly, enemyShips[0], "fleeBtn");
 });
-
-
-
-
-// displayText = () => {
-//     displayText.el.innerHTML = `
-//     <h4>Space Battle</h4>
-//     <h4>The enemy ship has been destroyed. Another one approaches!</h4>
-//     <h4>Player Ship Integrity: ${Player.hull}. ${enemyShips.length} enemy ships remaining</h4>
-//     <h4>Do you wish to stand your ground or flee ?</h4>
-//     `
-// }
-
-
-// console.log(USSAssembly)
-
-// console.log(alienVessel)
-// console.log(alienVessel.hull);
