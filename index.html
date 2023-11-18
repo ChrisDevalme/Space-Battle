@@ -2,53 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
     <title>Document</title>
     <link href="style.css" type="text/css" rel="stylesheet" />
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Orbitron&family=Roboto&family=Roboto+Slab&family=Trispace&family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
     <main class="game__screen">
+        <div class="images">
 
-            <div class="player">
-                <div class="player__health">
-                    TEST text PLAYER health Note: Place array here.
-                </div>
-            </div>
-            <div class="enemy">
-                <div class="enemy__health">
-                    TEST text ENEMY enemy__health Note: place array here.
-                </div>
-                <div class="enemies__remaining">
-                    TEST text ENEMIES enemies__remaining Numbers only wvr, bro.
-                    
-                </div>
-            </div>
-
-        <div class="missiles">
-            FIRE THE MISSILE!
-        </div>
         <div class="enemy__img">
            <img src="https://lpc.opengameart.org/sites/default/files/ship3.png" id="enemy-img" >
         </div>
 
-        <div class="enemies__remaining">
-            FIVE ENEMIES enemies__remaining
-        </div>
-
         <div class="player__img">
             <img src="https://opengameart.org/sites/default/files/styles/medium/public/spaceship.pod_.1.png" id="player-img">
+        </div>
+
         </div>
         <div class="display__text">
 
         </div>
         <div class="buttons">
             <button id="atk__btn">ATTACK!</button>
+            <audio id="audioPlayer" src="LaserGunsMiss.mp3"></audio>
             <button id="flee__btn">FLEE!</button>
         </div>
         <div class="points__bar">
 
         </div>
+        <div class="display__text" id="display-text">
+            <h4>
+                Welcome to the great expanse! Fight your way through an onslaught of enemy vessels to make your way to safety. <br>Don't be afraid to make your escape early if you can manage to punch a hole in their defenses;<br>but be wary! Your final score will be impacted by the number of ships remaining as well as the amount of Hull Points you've lost!
+            </h4>
+        </div>
     </main>
+    
 </body>
 </html>
+
+
+

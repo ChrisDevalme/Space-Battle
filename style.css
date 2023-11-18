@@ -2,12 +2,61 @@
     box-sizing: border-box;
 }
 
+@keyframes spin {
+    0% {
+     opacity: 0;
+     transform: rotate(0deg);
+    }
+   
+    100% {
+     transform: rotate(360deg);
+    }
+   }
+   
+   @keyframes moveInRight {
+    0% {
+     opacity: 0;
+     transform: translateX(-50rem);
+    }
+   
+    50% {
+     opacity: 0.5;
+     transform: translateX(50rem);
+    }
+   
+    100% {
+     opacity: 1;
+     transform: translateX(0rem);
+    }
+   }
+   
+   @keyframes moveInLeft {
+    0% {
+     opacity: 0;
+     transform: translateX(50rem);
+    }
+   
+    50% {
+     opacity: 0.5;
+     transform: translateX(-50rem);
+    }
+   
+    100% {
+     opacity: 1;
+     transform: translateX(0rem);
+    }
+   }
+
 html {
     font-size: 10pt;
+    color: white;
 }
 
 body {
-    background-color: black;
+    background-image: url("https://media.tenor.com/XeKOhPmE920AAAAC/gal%C3%A1xia-galaxy.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 .buttons {
@@ -16,17 +65,33 @@ body {
     text-align: center;
     align-items: end;
     padding: 1rem;
+}
 
+.images{
+    
 }
 
 .game__screen {
+    display: flex;
     flex-direction: column;
-    background-color: white;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     width: 100vw;
-
 }
 
+.display__text{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    font-family: 'Trispace', sans-serif;
+    margin-bottom: 5rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    background-color: rgba(0,0,0,.6);
+    border-radius: 5%;
+}
 
 .enemy {
     display: flex;
@@ -39,9 +104,62 @@ body {
 }
 
 #enemy-img {
-border: solid 1px black;
+    Transform: rotate(180deg);
+    width: 20rem;
+    margin-left: 35px;
+    margin-bottom: 5rem;
 }
 
 #player-img {
-border: solid 1px black;
+    width: 25rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: end;
+    padding: 1rem;
+    background-color: rgba(0,0,0, .8);
+    gap: 3rem;
+    margin: 1rem;
+}
+
+.buttons > button {
+    font-family: 'Trispace', sans-serif;
+    font-size: 15px;
+    background-color: rgba(99,39,16, 1);
+    color: white;
+    width: 20vw;
+    height: 5vh;
+}
+
+
+
+button:hover {
+    cursor: pointer;
+    box-shadow: 1px 7px 5px rgba(0, 0, 0, 1);
+    transform: scale(1.5);
+    transition: .5s;
+    background-color: red;
+}
+
+button:active, #player-img {
+    transform: scale(1);
+    transition: .005s;
+}
+
+.restart{
+    font-family: 'Trispace', sans-serif;
+    font-size: 15px;
+    background-color: blue;
+    color: white;
+    width: 10vw;
+    height: 2.5vh;
+    margin-bottom: 1rem;
+}
+
+a{
+    text-decoration: none;
+    color: white;
 }
